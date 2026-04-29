@@ -1,18 +1,125 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Redirect</title>
+<title>Welcome</title>
 
-<!-- Redirect super cepat -->
-<meta http-equiv="refresh" content="0; url=https://miftahus-portofolio.vercel.app/">
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at top, #0f172a, #020617);
+    color: #e2e8f0;
+    font-family: 'Courier New', monospace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(0, 255, 170, 0.2);
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(0, 255, 170, 0.2);
+    backdrop-filter: blur(10px);
+    animation: fadeIn 1s ease;
+  }
+
+  h1 {
+    margin-bottom: 10px;
+    color: #22c55e;
+    text-shadow: 0 0 10px #22c55e;
+  }
+
+  p {
+    margin-bottom: 20px;
+    color: #94a3b8;
+  }
+
+  .timer {
+    font-size: 28px;
+    color: #38bdf8;
+    margin: 10px 0;
+  }
+
+  button {
+    background: transparent;
+    border: 1px solid #22c55e;
+    color: #22c55e;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    background: #22c55e;
+    color: #020617;
+    box-shadow: 0 0 10px #22c55e;
+  }
+
+  .secondary {
+    border-color: #38bdf8;
+    color: #38bdf8;
+  }
+
+  .secondary:hover {
+    background: #38bdf8;
+    color: #020617;
+    box-shadow: 0 0 10px #38bdf8;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+</style>
 
 <script>
-location.replace("https://miftahus-portofolio.vercel.app/");
+let countdown = 10;
+
+function updateTimer() {
+  document.getElementById("timer").innerText = countdown;
+  countdown--;
+
+  if (countdown < 0) {
+    window.location.href = "https://miftahus-portofolio.vercel.app/";
+  } else {
+    setTimeout(updateTimer, 1000);
+  }
+}
+
+function goPortfolio() {
+  window.location.href = "https://miftahus-portofolio.vercel.app/";
+}
+
+function goReverse() {
+  window.location.href = "https://mift4hus.github.io/reverse-shell-generator/";
+}
+
+window.onload = updateTimer;
 </script>
 
 </head>
+
 <body>
-Redirecting...
+
+<div class="card">
+  <h1>Access Gateway</h1>
+  <p>Redirecting to portfolio in</p>
+
+  <div class="timer">
+    <span id="timer">10</span>s
+  </div>
+
+  <p>Select destination:</p>
+
+  <button onclick="goPortfolio()">🚀 Go to Portfolio</button>
+  <button class="secondary" onclick="goReverse()">💻 Reverse Shell</button>
+</div>
+
 </body>
 </html>
